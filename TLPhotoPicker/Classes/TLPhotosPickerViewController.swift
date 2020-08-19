@@ -90,6 +90,7 @@ public struct TLPhotosPickerConfigure {
     public var groupByFetch: PHFetchedResultGroupedBy? = nil
     public var supportedInterfaceOrientations: UIInterfaceOrientationMask = .portrait
     public var popup: [PopupConfigure] = []
+    public var spacing: CGFloat = 5.0
     public init() {
         
     }
@@ -175,6 +176,10 @@ open class TLPhotosPickerViewController: UIViewController {
         set {
             self.configure.allowedLivePhotos = newValue
         }
+    }
+    
+    private var spacing: CGFloat {
+        return self.configure.spacing
     }
     @objc open var canSelectAsset: ((PHAsset) -> Bool)? = nil
     @objc open var didExceedMaximumNumberOfSelection: ((TLPhotosPickerViewController) -> Void)? = nil
@@ -360,7 +365,7 @@ extension TLPhotosPickerViewController {
             return
         }
         let count = CGFloat(self.configure.numberOfColumn)
-        let width = (self.view.frame.size.width-(5*(count-1)))/count
+        let width = (self.view.frame.size.width-(self.spacing*(count-1)))/count
         self.thumbnailSize = CGSize(width: width, height: width)
         layout.itemSize = self.thumbnailSize
         self.collectionView.collectionViewLayout = layout
