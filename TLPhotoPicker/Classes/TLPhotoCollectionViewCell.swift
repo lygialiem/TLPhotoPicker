@@ -43,11 +43,12 @@ open class TLPhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet open var selectedHeight: NSLayoutConstraint?
     @IBOutlet open var orderLabel: UILabel?
     @IBOutlet open var orderBgView: UIView?
+    @IBOutlet weak var checkBoxImage: UIImageView!
     
     var configure = TLPhotosPickerConfigure() {
         didSet {
-            self.selectedView?.layer.borderColor = self.configure.selectedColor.cgColor
-            self.orderBgView?.backgroundColor = self.configure.selectedColor
+            self.selectedView?.layer.borderColor = UIColor.clear.cgColor
+            self.orderBgView?.backgroundColor = UIColor.clear
             self.videoIconImageView?.image = self.configure.videoIcon
         }
     }
@@ -159,7 +160,7 @@ open class TLPhotoCollectionViewCell: UICollectionViewCell {
         self.selectedView?.isHidden = true
         self.selectedView?.layer.borderWidth = 10
         self.selectedView?.layer.cornerRadius = 15
-        self.orderBgView?.layer.cornerRadius = 2
+        self.checkBoxImage.image = configure.checkBoxImage
         self.videoIconImageView?.image = self.configure.videoIcon
         if #available(iOS 11.0, *) {
             self.imageView?.accessibilityIgnoresInvertColors = true

@@ -91,6 +91,7 @@ public struct TLPhotosPickerConfigure {
     public var supportedInterfaceOrientations: UIInterfaceOrientationMask = .portrait
     public var popup: [PopupConfigure] = []
     public var spacing: CGFloat = 5.0
+    public var checkBoxImage: UIImage? = TLBundle.podBundleImage(named: "checkBox")
     public init() {
         
     }
